@@ -1,0 +1,19 @@
+{
+  "version": "1.0.0-*",
+
+  "dependencies": {
+    "Microsoft.EntityFrameworkCore": "1.0.1",
+    "NETStandard.Library": "1.6.0",
+    "SimpleInjector": "3.2.2",
+    "SimpleInjector.Extensions.ExecutionContextScoping": "3.2.2",
+    "System.Diagnostics.Contracts": "4.0.1",
+    "System.Reflection": "4.1.0",
+    "System.Reflection.TypeExtensions": "4.1.0"
+  },
+
+  "frameworks": {
+    "netstandard1.6": {
+      "imports": "dnxcore50"
+    }
+  }
+}
