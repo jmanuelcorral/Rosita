@@ -24,7 +24,8 @@ namespace Rosita.Invoice.API.Service.Controllers
         }
 
         // GET api/Invoice/5
-        [HttpGet("{code}")]
+        [HttpGet]
+        [Route("/api/[controller]/Code/{code}")]
         public async Task<IActionResult> code(string code)
         {
             var response = await _getByCodeUseCase.Handle(new GetInvoiceByCodeRequest(new SimpleUseCaseRequestCriteria(CriteriaType.Equal))

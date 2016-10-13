@@ -2,7 +2,9 @@
   "version": "1.0.0-*",
 
   "dependencies": {
-    "NETStandard.Library": "1.6.0"
+    "NETStandard.Library": "1.6.0",
+    "Polly": "4.5.0-beta-netstandar-0001",
+    "SimpleInjector": "3.2.2"
   },
 
   "frameworks": {

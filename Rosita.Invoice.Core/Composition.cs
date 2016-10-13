@@ -15,7 +15,6 @@ namespace Rosita.Invoice.Core
         public static void Setup(Container container, Lifestyle lf)
         {
             container.Register<UseCase<GetInvoiceByCodeRequest, GetInvoiceByCodeResponse>, GetInvoiceByInvoiceCodeUseCase>();
-
         }
     }
 }

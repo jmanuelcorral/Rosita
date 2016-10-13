@@ -66,7 +66,7 @@ namespace Rosita.Invoice.API.Service
 
             _container.Options.DefaultScopedLifestyle = new AspNetRequestLifestyle();
             _container.Register<AppConfiguration>(() => appConfig, Lifestyle.Singleton);
-            app.SetupComposition(_container);
+            app.SetupComposition(appConfig,_container);
 
             _container.Verify();
 
