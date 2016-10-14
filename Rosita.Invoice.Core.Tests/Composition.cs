@@ -7,6 +7,9 @@ using Microsoft.EntityFrameworkCore.Storage;
 using Rosita.XCutting.Configuration;
 using Rosita.XCutting.DI;
 using SimpleInjector;
+using Rosita.Infrastructure.Database.Contexts;
+using SimpleInjector.Diagnostics;
+using Rosita.Infrastructure.Database.UnitOfWork;
 
 namespace Rosita.Invoice.Core.Tests
 {
@@ -21,6 +24,14 @@ namespace Rosita.Invoice.Core.Tests
             Core.Composition.Setup(container, lf);
             Infrastructure.Database.Composition.Setup(container, configuration, lf);
             ServiceLocator.SetupContainer(container);
+            //Deactivate container warnings in tests for non threadsafe in entity framework
+            Registration DataContextRegistration = container.GetRegistration(typeof(DataContext)).Registration;
+            DataContextRegistration.SuppressDiagnosticWarning(DiagnosticType.DisposableTransientComponent,
+                "This is Testing, and we don't have an asp approach");
+
+            Registration UnitOfWorkRegistration = container.GetRegistration(typeof(IBussinessUnitOfWork)).Registration;
+            UnitOfWorkRegistration.SuppressDiagnosticWarning(DiagnosticType.DisposableTransientComponent,
+                "This is Testing, and we don't have an asp approach");
             container.Verify();
         }
     }

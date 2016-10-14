@@ -22,7 +22,7 @@ namespace Rosita.Invoice.Core.Tests
 
         public GetInvoiceByInvoiceCodeUseCase()
         {
-            Composition.Setup(new Container(), Lifestyle.Scoped);
+            Composition.Setup(new Container(), Lifestyle.Transient);
             _useCase = ServiceLocator.Resolve<UseCase<GetInvoiceByCodeRequest, GetInvoiceByCodeResponse>>();
         }
         [Fact]
@@ -34,11 +34,12 @@ namespace Rosita.Invoice.Core.Tests
               .BDDfy<GetInvoiceByInvoiceCodeUseCase>();
         }
 
+        #region Given
         private void AValidRequestMessageAboutANotFoundInvoice()
         {
             _notFoundRequest = new GetInvoiceByCodeRequest(new SimpleUseCaseRequestCriteria(CriteriaType.Equal)) { InvoiceCode = "5"};
         }
-
+#
         private async Task IFindThisInvoice()
         {
             _notFoundResponse = await _useCase.Handle(_notFoundRequest);
