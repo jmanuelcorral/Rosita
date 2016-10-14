@@ -23,6 +23,7 @@ namespace Rosita.Invoice.Core.Tests
             };
             Core.Composition.Setup(container, lf);
             Infrastructure.Database.Composition.Setup(container, configuration, lf);
+            XCutting.Composition.Setup(container, lf);
             ServiceLocator.SetupContainer(container);
             //Deactivate container warnings in tests for non threadsafe in entity framework
             Registration DataContextRegistration = container.GetRegistration(typeof(DataContext)).Registration;

@@ -15,9 +15,10 @@ namespace Rosita.Invoice.API.Service
             container.RegisterMvcViewComponents(app);
 
             // Add application services. For instance:
-            var lifetime = new AspNetRequestLifestyle();
-            Core.Composition.Setup(container, lifetime);
-            Infrastructure.Database.Composition.Setup(container, config, lifetime);
+            var lifestyle = new AspNetRequestLifestyle();
+            Core.Composition.Setup(container, lifestyle);
+            Infrastructure.Database.Composition.Setup(container, config, lifestyle);
+            XCutting.Composition.Setup(container, lifestyle);
             XCutting.DI.ServiceLocator.SetupContainer(container);
             
 
